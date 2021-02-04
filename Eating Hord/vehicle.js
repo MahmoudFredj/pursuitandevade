@@ -18,10 +18,11 @@ class Vehicle {
     }
 
     this.speed = 10
-    this.force = 0.01
+    this.force = 0.1
   }
 
   draw = (brush) => {
+    if (!this.head) return
     brush.fillStyle = this.color
     brush.strokeStyle = 'white'
     brush.lineWidth = 2
@@ -35,9 +36,6 @@ class Vehicle {
   }
 
   tick = () => {
-    // console.log(dist)
-
-    // console.log(dist / 10000)
     // this.force = dist / 10000
 
     const angle = Math.atan2(this.velocity.x, this.velocity.y)
@@ -62,12 +60,12 @@ class Vehicle {
     }
   }
 
-  gravitate = (target) => {
+  gravitate = (target, index) => {
     this.target = target
     const dist = Math.sqrt(
       Math.pow(this.x - this.target.x, 2) + Math.pow(this.y - this.target.y, 2),
     )
-    this.force = dist / 10000
+    // this.force = dist / 10000
     const desired = {
       x: (this.target.x - this.x) / dist,
       y: (this.target.y - this.y) / dist,
@@ -92,7 +90,7 @@ class Vehicle {
     const dist = Math.sqrt(
       Math.pow(this.x - this.target.x, 2) + Math.pow(this.y - this.target.y, 2),
     )
-    this.force = 0.001
+    // this.force = 0.001
     const desired = {
       x: (this.target.x - this.x) / dist,
       y: (this.target.y - this.y) / dist,

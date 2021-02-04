@@ -1,4 +1,4 @@
-class Gravitation {
+class Point {
   constructor(x, y, size, color) {
     this.x = x
     this.y = y
